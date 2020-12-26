@@ -8,6 +8,21 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - book_room
+  - num_rooms
+  - type_rooms
+  - book_number_room
+
+entities:
+  - number
+  - location
+  - room_type
+
+slots:
+  number:
+    type: any
+  room_type:
+    type: any
 
 responses:
   utter_greet:
@@ -28,6 +43,36 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_submit:
+  - text: 'Your room(s) have been booked. Number of {room_type} rooms booked : {number}'
+
+  utter_ask_number:
+  - text: Select the number of rooms you want to book
+  - buttons:
+    - title: '1'
+      payload: /num_rooms{"number":"1"}
+    - title: '2'
+      payload: /num_rooms{"number":"2"}
+
+  utter_ask_room_type:
+  - text: Select from one of the room types
+  - buttons:
+    - title: Simple
+      payload: /type_rooms{"room_type":"Simple"}
+    - title: Deluxe
+      payload: /type_rooms{"room_type":"Deluxe"}
+
+actions:
+  - utter_ask_number
+  - utter_ask_room_type
+  - utter_submit
+  - utter_goodbye
+  - utter_iamabot
+  - utter_happy
+  - utter_did_that_help
+  - utter_cheer_up
+  - utter_greet
 
 session_config:
   session_expiration_time: 60
