@@ -10,17 +10,20 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-
+from rasa_sdk.forms import FormAction
 
 class ActionHelloWorld(FormAction):
 
     def name(self) -> Text:
         return "form_book_room"
-
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        print("required_slots(tracker:Tracker)")
+        return ["number", "room_type"]
     def submit(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict]:
 
-        dispatcher.utter_message(text="utter_submit")
+        dispatcher.utter_message(template="utter_submit")
 
         return []
