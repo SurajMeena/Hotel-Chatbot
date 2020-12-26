@@ -35,7 +35,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: book_room 
+  - intent: book_room
+    entities:
+      - location
   - action: form_book_room
   - active_loop: form_book_room
   - active_loop: null
@@ -46,7 +48,9 @@ stories:
   steps:  
   - intent: greet
   - action: utter_greet
-  - intent: book_room 
+  - intent: book_room
+      entities:
+    - location 
   - action: form_book_room
   - active_loop: form_book_room
   - active_loop: null
@@ -64,7 +68,6 @@ stories:
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
-  - action: action_reset_slots
   - action: utter_is_that_all
   - intent: affirm
   - action: utter_goodbye
@@ -80,7 +83,6 @@ stories:
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
-  - action: action_reset_slots
   - action: utter_is_that_all
   - intent: deny
   - action: utter_deny_message
@@ -96,7 +98,6 @@ stories:
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
-  - action: action_reset_slots
   - action: utter_is_that_all
   - intent: affirm
   - action: utter_goodbye
@@ -112,7 +113,6 @@ stories:
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
-  - action: action_reset_slots
   - action: utter_is_that_all
   - intent: deny
   - action: utter_deny_message

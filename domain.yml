@@ -74,6 +74,28 @@ actions:
   - utter_cheer_up
   - utter_greet
 
+forms:
+  form_book_room:
+    location:
+      - type: from_entity
+        entity: location
+    number:
+      - type: from_entity
+        entity: number
+    room_type:
+      - type: from_entity
+        entity: room_type
+  form_book_room_number:
+    location:
+      - type: from_entity
+        entity: location
+    number:
+      - type: from_entity
+        entity: number
+    room_type:
+      - type: from_entity
+        entity: room_type
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
