@@ -5,25 +5,63 @@
 # https://rasa.com/docs/rasa/core/actions/#custom-actions/
 
 
-# This is a simple example for a custom action which utters "Hello World!"
-
-from typing import Any, Text, Dict, List
+from rasa_sdk.events import SlotSet, UserUtteranceReverted
+from typing import Any, Text, Dict, List, Union
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
 
-class ActionHelloWorld(FormAction):
-
+class BookRoomInfo(FormAction):
     def name(self) -> Text:
         return "form_book_room"
+
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
-        print("required_slots(tracker:Tracker)")
         return ["number", "room_type"]
-    def submit(self, dispatcher: CollectingDispatcher,
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict]:
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
 
-        dispatcher.utter_message(template="utter_submit")
-
+        # utter submit template
+        dispatcher.utter_message(
+            template="utter_submit", number=tracker.get_slot('number'),room_type=tracker.get_slot('room_type')
+            )
         return []
+
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+
+        return {
+            "number": self.from_entity(entity="number", intent='num_rooms'),
+            "room_type": self.from_entity(entity="room_type",intent="type_rooms")
+        }
+
+class BookRoomNumberInfo(FormAction):
+    def name(self) -> Text:
+        return "form_book_room_number"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        return ["room_type"]
+
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+
+        # utter submit template
+        dispatcher.utter_message(template="utter_submit", 
+                                room_type=tracker.get_slot('room_type'))
+        return []
+
+    # def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+
+    #     return {
+    #         "room_type": self.from_entity(entity="room_type", intent="type_rooms")
+    #     }
+

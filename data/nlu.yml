@@ -49,7 +49,7 @@ nlu:
     - don't like that
     - no way
     - not really
-
+    
 - intent: mood_great
   examples: |
     - perfect
@@ -106,7 +106,7 @@ nlu:
     - Room book
     - I would like to book a room
 
-- intent:book_number_room
+- intent: book_number_room
   examples: |
     - [2](number) rooms
     - i want to book [2](number) [rooms](location) for my stay
@@ -139,7 +139,7 @@ nlu:
     - simple
     - simpl
 
-  - synonym: Deluxe
+- synonym: Deluxe
   examples: |
     - deluxe
     - delux
