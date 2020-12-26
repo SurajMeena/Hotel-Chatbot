@@ -28,9 +28,7 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
-
-stories:
-
+  
 - story: book a room affirm path
   steps:
   - intent: greet
@@ -49,7 +47,7 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: book_room
-      entities:
+    entities:
     - location: "room"
   - action: form_book_room
   - active_loop: form_book_room
@@ -58,13 +56,14 @@ stories:
   - action: utter_deny_message
 
 - story: book number room path affirm 1 
+  steps:
   - intent: greet
   - action: utter_greet
   - intent: book_number_room
     entities:
     - location: "room"
     - number: "1"
-  - slot{"number": "1"}
+  # - slot{"number": "1"}
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
@@ -73,13 +72,14 @@ stories:
   - action: utter_goodbye
 
 - story: book number room path deny 1 
+  steps:
   - intent: greet
   - action: utter_greet
   - intent: book_number_room
-      entities:
+    entities:
     - location: "room"
     - number: "1"
-  - slot{"number": "1"}
+  # - slot{"number": "1"}
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
@@ -88,13 +88,14 @@ stories:
   - action: utter_deny_message
 
 - story: book number room path affirm 2 
+  steps:
   - intent: greet
   - action: utter_greet
   - intent: book_number_room
-      entities:
+    entities:
     - location: "room"
     - number: "2"
-  - slot{"number": "2"}
+  # - slot{"number": "2"}
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
@@ -103,13 +104,14 @@ stories:
   - action: utter_goodbye
 
 - story: book number room path deny 2
+  steps:
   - intent: greet
   - action: utter_greet
   - intent: book_number_room
-      entities:
+    entities:
     - location: "room"
     - number: "2"
-  - slot{"number": "2"}
+  # - slot{"number": "2"}
   - action : form_book_room_number
   - active_loop : form_book_room_number
   - active_loop : null
