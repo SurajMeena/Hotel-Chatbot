@@ -90,3 +90,56 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: book_room
+  examples: |
+    - I want to book a room
+    - Can I book a room
+    - how can i book a room
+    - please book a room for me
+    - can you book a room for me
+    - can you book a room
+    - please book a room
+    - book a room
+    - room book
+    - Book a room
+    - Room book
+    - I would like to book a room
+
+- intent:book_number_room
+  examples: |
+    - [2](number) rooms
+    - i want to book [2](number) [rooms](location) for my stay
+    - i would like to book [1](number) [room](location)
+    - I want to book [2](number) [rooms](location)
+    - book [2](number) [rooms](location) for me
+    - need [1](number) [room](location)
+    - book [1](number) [room](location)
+    - book [2](number) [rooms](location)
+    - need [2](number) [rooms](location) to book
+
+- intent: num_rooms
+  examples: |
+    - [1](number)
+    - [2](number)
+
+- intent: room_type
+  examples: |
+    - [Simple](room_type)
+    - [Deluxe](room_type)
+
+- synonym: room
+  examples: |
+    - rooms
+    - Room
+    - Rooms
+
+- synonym: Simple
+  examples: |
+    - simple
+    - simpl
+
+  - synonym: Deluxe
+  examples: |
+    - deluxe
+    - delux
