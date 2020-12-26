@@ -50,7 +50,7 @@ stories:
   - action: utter_greet
   - intent: book_room
       entities:
-    - location 
+    - location: "room"
   - action: form_book_room
   - active_loop: form_book_room
   - active_loop: null
